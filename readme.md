@@ -9,6 +9,18 @@
 |-------------|------------------------------|
 | PERIPHERAL & INTERFACING LAB |CSE-311L     |
 
+<p align="center">
+
+```bash
+tasm filename /l
+```
+</p>
+## Table of Contents
+
+| # 	| Experiment 	| Date 	|
+|---	|------------	|------	|
+|   	|            	|      	|
+
 
 <h3 align="center">
    <a href="[Aami Bhoot](https://github.com/aamibhoot)">
