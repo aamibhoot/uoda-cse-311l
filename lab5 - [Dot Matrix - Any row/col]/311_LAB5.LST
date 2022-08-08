@@ -1,0 +1,35 @@
+      1				     ;CSE-311L [PIN]
+      2				     ;Experiment 5 : Dot Matrix	[Active	Low (0)]
+      3				     ;Date: 29/06/2022
+      4
+      5	0000			     .model small
+      6	0000			     .stack 100h
+      7	0000			     .data
+      8	      =	0018			  porta	 equ 18h     ; port a for orange led
+      9	      =	001A			  portb	 equ 1ah     ; port b for green	led
+     10	      =	001C			  portc	 equ 1ch
+     11	      =	001E			  c_port equ 1eh     ;Control Port
+     12
+     13	0000			     .code
+     14	0000			     main proc
+     15	0000  B8 0000s			       mov ax, @data	     ;Data segment initialization
+     16	0003  8B D0			       mov dx, ax
+     17	0005  B0 80			       mov al, 10000000b
+     18	0007  E6 1E			       out c_port, al
+     19
+     20					  ;main	code starts
+     21	0009  B0 FF			       mov al, 11111111b
+     22	000B  E6 1C			       out portc, al
+     23
+     24	000D  B0 DF			       mov al, 11011111b     ;A5 Column
+     25	000F  E6 18			       out porta, al
+     26
+     27	0011  B0 FF			       mov al, 11111111b
+     28	0013  E6 1A			       out portb, al
+     29
+     30					  ;dos exit
+     31	0015  B4 4C			       mov ah, 4ch
+     32	0017  CD 21			       int 21h
+     33
+     34	0019			     main endp
+     35				     end main

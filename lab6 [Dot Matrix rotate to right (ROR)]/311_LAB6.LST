@@ -1,0 +1,42 @@
+      1				     ;CSE-311L [PIN]
+      2				     ;Experiment 6 : Dot Matrix	right to left sequential orientations [Active Low (0)]
+      3				     ;Date: 22/07/2022
+      4
+      5	0000			     .model small
+      6	0000			     .stack 100h
+      7	0000			     .data
+      8	      =	0018			  porta	 equ 18h     ; port a for orange led
+      9	      =	001A			  portb	 equ 1ah     ; port b for green	led
+     10	      =	001C			  portc	 equ 1ch
+     11	      =	001E			  c_port equ 1eh     ;Control Port
+     12
+     13	0000			     .code
+     14	0000			     main proc
+     15	0000  B8 0000s			       mov  ax,	@data	      ;Data segment initialization
+     16	0003  8B D0			       mov  dx,	ax
+     17	0005  B0 80			       mov  al,	10000000b
+     18	0007  E6 1E			       out  c_port, al
+     19
+     20					  ;main	code starts
+     21	0009  B0 FF			       mov  al,	11111111b
+     22	000B  E6 1C			       out  portc, al
+     23	000D  B0 FF			       mov  al,	11111111b
+     24	000F  E6 1A			       out  portb, al
+     25	0011  B0 FE			       mov  al,	11111110b
+     26
+     27					  ;loop
+     28	0013				  l1:
+     29	0013  B9 0030			       mov  cx,	30h	      ;30h = time
+     30
+     31	0016				  l2:
+     32	0016  E6 18			       out  porta, al
+     33	0018  E2 FC			       loop l2
+     34	001A  D0 C0			       rol  al,	1h
+     35	001C  EB F5			       jmp  l1
+     36
+     37					  ;dos exit
+     38	001E  B4 4C			       mov  ah,	4ch
+     39	0020  CD 21			       int  21h
+     40
+     41	0022			     main endp
+     42				     end main

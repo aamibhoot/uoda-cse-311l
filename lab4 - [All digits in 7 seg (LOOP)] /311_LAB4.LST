@@ -1,0 +1,133 @@
+      1					     ;CSE - 311L [PIN]
+      2					     ;Experiment 4 : Displaying	all char / number in 7 seg
+      3					     ;Date: 03 / 08 / 2022
+      4
+      5	0000				     .model small
+      6	0000				     .stack 100h
+      7	0000				     .data
+      8	      =	0019			  porta	 equ 19h
+      9	      =	001B			  portb	 equ 1bh
+     10	      =	001D			  portc	 equ 1dh
+     11	      =	001F			  c_port equ 1fh     ;Control Port
+     12
+     13	0000				     .code
+     14	0000			     main proc
+     15	0000  B8 0000s			       mov  ax,	@data	      ;Data segment initialization
+     16	0003  8B D0			       mov  dx,	ax
+     17	0005  B0 80			       mov  al,	10000000b
+     18	0007  E6 1F			       out  c_port, al
+     19					  ; main code starts
+     20					  ;loop	start
+     21	0009				  l0:
+     22	0009  B9 0030			       mov  cx,	30h	      ;30h = time
+     23
+     24					  ;Display 0
+     25	000C				  l1:
+     26	000C  B0 F9			       mov  al,	11111001b
+     27	000E  E6 19			       out  porta, al
+     28	0010  E2 FA			       loop l1
+     29	0012  B9 0030			       mov  cx,	30h	      ;30h = time
+     30	0015				  l2:			      ;Deactive	port b
+     31	0015  B0 FF			       mov  al,	11111111b
+     32	0017  E6 1B			       out  portb, al
+     33	0019  E2 FA			       loop l2
+     34					  ;Display 1
+     35	001B				  l3:
+     36	001B  B0 86			       mov  al,	10000110b
+     37	001D  E6 19			       out  porta, al
+     38	001F  E2 FA			       loop l3
+     39	0021  B9 0030			       mov  cx,	30h	      ;30h = time
+     40	0024				  l4:			      ;Deactive	port b
+     41	0024  B0 FF			       mov  al,	11111111b
+     42	0026  E6 1B			       out  portb, al
+     43	0028  E2 FA			       loop l4
+     44					  ;Display 2
+     45	002A				  l5:
+     46	002A  B0 A4			       mov  al,	10100100b
+     47	002C  E6 19			       out  porta, al
+     48	002E  E2 FA			       loop l5
+     49	0030  B9 0030			       mov  cx,	30h	      ;30h = time
+     50	0033				  l6:			      ;Deactive	port b
+     51	0033  B0 FF			       mov  al,	11111111b
+     52	0035  E6 1B			       out  portb, al
+     53	0037  E2 FA			       loop l6
+     54
+     55					  ;Display 3
+     56	0039				  l7:
+     57	0039  B0 B0			       mov  al,	10110000b
+     58	003B  E6 19			       out  porta, al
+     59	003D  E2 FA			       loop l7
+     60	003F  B9 0030			       mov  cx,	30h	      ;30h = time
+     61	0042				  l8:			      ;Deactive	port b
+     62	0042  B0 FF			       mov  al,	11111111b
+     63	0044  E6 1B			       out  portb, al
+     64	0046  E2 FA			       loop l8
+     65
+     66					  ;Display 4
+     67	0048				  l9:
+     68	0048  B0 99			       mov  al,	10011001b
+     69	004A  E6 19			       out  porta, al
+     70	004C  E2 FA			       loop l9
+     71	004E  B9 0030			       mov  cx,	30h	      ;30h = time
+     72	0051				  l10:			      ;Deactive	port b
+     73	0051  B0 FF			       mov  al,	11111111b
+     74	0053  E6 1B			       out  portb, al
+     75	0055  E2 FA			       loop l10
+     76
+     77					  ;Display 5
+     78	0057				  l11:
+     79	0057  B0 92			       mov  al,	10010010b
+     80	0059  E6 19			       out  porta, al
+     81	005B  E2 FA			       loop l11
+     82	005D  B9 0030			       mov  cx,	30h	      ;30h = time
+     83	0060				  l12:			      ;Deactive	port b
+     84	0060  B0 FF			       mov  al,	11111111b
+     85	0062  E6 1B			       out  portb, al
+     86	0064  E2 FA			       loop l12
+     87
+     88					  ;Display 6
+     89	0066				  l13:
+     90	0066  B0 82			       mov  al,	10000010b
+     91	0068  E6 19			       out  porta, al
+     92	006A  E2 FA			       loop l13
+     93	006C  B9 0030			       mov  cx,	30h	      ;30h = time
+     94	006F				  l14:			      ;Deactive	port b
+     95	006F  B0 FF			       mov  al,	11111111b
+     96	0071  E6 1B			       out  portb, al
+     97	0073  E2 FA			       loop l14
+     98
+     99					  ;Display 7
+    100	0075				  l15:
+    101	0075  B0 F8			       mov  al,	11111000b
+    102	0077  E6 19			       out  porta, al
+    103	0079  E2 FA			       loop l15
+    104	007B  B9 0030			       mov  cx,	30h	      ;30h = time
+    105	007E				  l16:			      ;Deactive	port b
+    106	007E  B0 FF			       mov  al,	11111111b
+    107	0080  E6 1B			       out  portb, al
+    108	0082  E2 FA			       loop l16
+    109
+    110					  ;Display 8
+    111	0084				  l17:
+    112	0084  B0 80			       mov  al,	10000000b
+    113	0086  E6 19			       out  porta, al
+    114	0088  E2 FA			       loop l17
+    115	008A  B9 0030			       mov  cx,	30h	      ;30h = time
+    116	008D				  l18:			      ;Deactive	port b
+    117	008D  B0 FF			       mov  al,	11111111b
+    118	008F  E6 1B			       out  portb, al
+    119	0091  E2 FA			       loop l18
+    120
+    121					  ;Display 9
+    122	0093				  l19:
+    123	0093  B0 90			       mov  al,	10010000b
+    124	0095  E6 19			       out  porta, al
+    125	0097  E2 FA			       loop l19
+    126	0099  B9 0030			       mov  cx,	30h	      ;30h = time
+    127	009C  E9 FF6A			       jmp  l0
+    128
+    129					  ;dos exit
+    130	009F  B4 4C			       mov  ah,	4ch
+    131	00A1  CD 21			       int  21h
+    132	00A3			     main endp
+    133					     end main

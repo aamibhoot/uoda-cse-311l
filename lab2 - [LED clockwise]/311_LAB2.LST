@@ -1,0 +1,70 @@
+      1				     ;CSE-311L [PIN]
+      2				     ;Experiment 2 : Displaying LED clockwise employing	8255A Interface
+      3				     ;Date: 18/05/2022
+      4
+      5	0000			     .model small
+      6	0000			     .stack 100h
+      7	0000			     .data
+      8	      =	0019			 porta	equ 19h
+      9	      =	001B			 portb	equ 1bh	;Default OUTPUT	ports for LED
+     10	      =	001D			 portc	equ 1dh
+     11	      =	001F			 c_port	equ 1fh	;Control Port
+     12
+     13	0000			     .code
+     14	0000			     main proc
+     15	0000  B8 0000s			      mov ax, @data ;Data segment initialization
+     16	0003  8B D0			      mov dx, ax
+     17	0005  B0 80			      mov al, 10000000b
+     18	0007  E6 1F			      out c_port, AL
+     19
+     20					     ;Experiment
+     21	0009				     l9:
+     22	0009  B9 0070			     mov cx, 70h
+     23					     ; LED matrix
+     24					     ; 1     2
+     25					     ; 3     4
+     26					     ;LED 1
+     27	000C				     l1:
+     28	000C  B0 F1			      mov al, 11110001b
+     29	000E  E6 1B			      out portb, al
+     30	0010  E2 FA			      loop l1
+     31	0012  B9 0070			      mov cx, 70h
+     32	0015				     l2:
+     33	0015  E6 1B			      out portb, al
+     34	0017  E2 FC			      loop l2
+     35
+     36					     ;LED 2
+     37	0019				     l3:
+     38	0019  B0 F2			      mov al, 11110010b
+     39	001B  E6 1B			      out portb, al
+     40	001D  E2 FA			      loop l3
+     41	001F  B9 0070			      mov cx, 70h
+     42	0022				     l4:
+     43	0022  E6 1B			      out portb, al
+     44	0024  E2 FC			      loop l4
+     45
+     46					     ;LED 4(3)
+     47	0026				     l5:
+     48	0026  B0 F8			      mov al, 11111000b
+     49	0028  E6 1B			      out portb, al
+     50	002A  E2 FA			      loop l5
+     51	002C  B9 0070			      mov cx, 70h
+     52	002F				     l6:
+     53	002F  E6 1B			      out portb, al
+     54	0031  E2 FC			      loop l6
+     55
+     56					     ;LED 3
+     57	0033				     l7:
+     58	0033  B0 F4			      mov al, 11110100b
+     59	0035  E6 1B			      out portb, al
+     60	0037  E2 FA			      loop l7
+     61	0039  B9 0070			      mov cx, 70h
+     62	003C				     l8:
+     63	003C  E6 1B			      out portb, al
+     64	003E  E2 FC			      loop l8
+     65
+     66					     ;dos exit
+     67	0040  B4 4C			      mov ah, 4ch
+     68	0042  CD 21			      int 21h
+     69	0044			     main endp
+     70				     end main

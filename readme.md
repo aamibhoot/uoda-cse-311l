@@ -11,16 +11,11 @@
 
 <p align="center">
 
+To execute: 
 ```bash
 tasm filename /l
 ```
 </p>
-## Table of Contents
-
-| # 	| Experiment 	| Date 	|
-|---	|------------	|------	|
-|   	|            	|      	|
-
 
 <h3 align="center">
    <a href="[Aami Bhoot](https://github.com/aamibhoot)">

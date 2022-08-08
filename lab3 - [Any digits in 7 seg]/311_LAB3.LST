@@ -1,0 +1,29 @@
+      1				     ;CSE-311L [PIN]
+      2				     ;Experiment 3 : Displaying	any char/ number in 7 seg
+      3				     ;Date: 09/06/2022
+      4
+      5	0000			     .model small
+      6	0000			     .stack 100h
+      7	0000			     .data
+      8	      =	0019			 porta	equ 19h
+      9	      =	001B			 portb	equ 1bh
+     10	      =	001D			 portc	equ 1dh
+     11	      =	001F			 c_port	equ 1fh		     ;Control Port
+     12
+     13	0000			     .code
+     14	0000			     main proc
+     15	0000  B8 0000s				mov ax,	@data	     ;Data segment initialization
+     16	0003  8B D0				mov dx,	ax
+     17	0005  B0 80				mov al,	10000000b
+     18	0007  E6 1F				out c_port, al
+     19					 ; main	code starts
+     20					 ; NOTE: 7 seg is ACTIVE LOW
+     21					 ;	  gfedcab
+     22	0009  B0 99				mov al,	10011001b    ; It will show 4
+     23	000B  E6 19				out porta, al	     ; 7 seg outputs at	port a
+     24
+     25					 ;dos exit
+     26	000D  B4 4C				mov ah,	4ch
+     27	000F  CD 21				int 21h
+     28	0011			     main endp
+     29				     end main

@@ -1,0 +1,34 @@
+      1				     ;CSE-311L [PIN]
+      2				     ;Assignment 2 : Dot Matrix	left to	right sequential orientations
+      3	0000			     .model small
+      4	0000			     .stack 100h
+      5	0000			     .data
+      6	      =	0018			  porta	 equ 18h     ; port a for orange led
+      7	      =	001A			  portb	 equ 1ah     ; port b for green	led
+      8	      =	001C			  portc	 equ 1ch
+      9	      =	001E			  c_port equ 1eh     ;Control Port
+     10	0000			     .code
+     11	0000			     main proc
+     12	0000  B8 0000s			       mov  ax,	@data	      ;Data segment initialization
+     13	0003  8B D0			       mov  dx,	ax
+     14	0005  B0 80			       mov  al,	10000000b
+     15	0007  E6 1E			       out  c_port, al
+     16					  ;main	code starts
+     17	0009  B0 FF			       mov  al,	11111111b
+     18	000B  E6 1C			       out  portc, al
+     19	000D  B0 DF			       mov  al,	11011111b
+     20	000F  E6 1A			       out  portb, al
+     21	0011  B0 7F			       mov  al,	01111111b
+     22					  ;loop
+     23	0013				  l1:
+     24	0013  B9 0030			       mov  cx,	30h	      ;30h = time
+     25	0016				  l2:
+     26	0016  E6 18			       out  porta, al
+     27	0018  E2 FC			       loop l2
+     28	001A  D0 C8			       ror  al,	1h
+     29	001C  EB F5			       jmp  l1
+     30					  ;dos exit
+     31	001E  B4 4C			       mov  ah,	4ch
+     32	0020  CD 21			       int  21h
+     33	0022			     main endp
+     34				     end main

@@ -1,0 +1,28 @@
+      1				     ;CSE-311L [PIN]
+      2				     ;Experiment 1 : Displaying	LED employing 8255A Interface
+      3				     ;Date: 18/05/2022
+      4
+      5	0000			     .model small
+      6	0000			     .stack 100h
+      7	0000			     .data
+      8	      =	0019			 porta	equ 19h
+      9	      =	001B			 portb	equ 1bh	;Default OUTPUT	ports for LED
+     10	      =	001D			 portc	equ 1dh
+     11	      =	001F			 c_port	equ 1fh	;Control Port
+     12
+     13	0000			     .code
+     14	0000			     main proc
+     15	0000  B8 0000s			      mov ax, @data ;Data segment initialization
+     16	0003  8B D0			      mov dx, ax
+     17	0005  B0 80			      mov al, 10000000b
+     18	0007  E6 1F			      out c_port, AL
+     19
+     20					     ;Experiment
+     21	0009  B0 F8			      mov al, 11111000b
+     22	000B  E6 1B			      out portb, al
+     23
+     24					     ;dos exit
+     25	000D  B4 4C			      mov ah, 4ch
+     26	000F  CD 21			      int 21h
+     27	0011			     main endp
+     28				     end main
