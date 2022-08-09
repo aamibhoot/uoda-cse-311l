@@ -1,5 +1,5 @@
 	;CSE - 311L [PIN]
-	;Experiment 4 : Displaying all char / number in 7 seg
+	;Experiment 4 : Displaying all digits in 7 seg
 	;Date: 03 / 08 / 2022
 	
 	.model small
@@ -23,7 +23,7 @@ main proc
 	
      ;Display 0
      l1:  
-          mov  al, 11111001b
+          mov  al, 11000000b
           out  porta, al
           loop l1
           mov  cx, 30h           ;30h = time
@@ -33,7 +33,7 @@ main proc
           loop l2
      ;Display 1
      l3:  
-          mov  al, 10000110b
+          mov  al, 11111001b
           out  porta, al
           loop l3
           mov  cx, 30h           ;30h = time

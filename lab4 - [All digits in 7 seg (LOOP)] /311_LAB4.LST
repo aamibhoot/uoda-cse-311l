@@ -1,5 +1,5 @@
       1					     ;CSE - 311L [PIN]
-      2					     ;Experiment 4 : Displaying	all char / number in 7 seg
+      2					     ;Experiment 4 : Displaying	all digits in 7	seg
       3					     ;Date: 03 / 08 / 2022
       4
       5	0000				     .model small
@@ -23,7 +23,7 @@
      23
      24					  ;Display 0
      25	000C				  l1:
-     26	000C  B0 F9			       mov  al,	11111001b
+     26	000C  B0 C0			       mov  al,	11000000b
      27	000E  E6 19			       out  porta, al
      28	0010  E2 FA			       loop l1
      29	0012  B9 0030			       mov  cx,	30h	      ;30h = time
@@ -33,7 +33,7 @@
      33	0019  E2 FA			       loop l2
      34					  ;Display 1
      35	001B				  l3:
-     36	001B  B0 86			       mov  al,	10000110b
+     36	001B  B0 F9			       mov  al,	11111001b
      37	001D  E6 19			       out  porta, al
      38	001F  E2 FA			       loop l3
      39	0021  B9 0030			       mov  cx,	30h	      ;30h = time
